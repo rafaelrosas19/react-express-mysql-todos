@@ -17,7 +17,6 @@ export default function TodoApp() {
 
   function handleSubmit(event){
     event.preventDefault()
-  
     setTodos([...todos, todo])
     setTodo({ name: '', completed: false })
   }
@@ -36,7 +35,7 @@ export default function TodoApp() {
   return (
     <div className="container">
       <Header />
-      <TodoForm handleTodo={handleTodo} handleSubmit={handleSubmit}/>
+      <TodoForm handleTodo={handleTodo} handleSubmit={handleSubmit} todo={todo}/>
       <Container todos={todos} toggleStatus={toggleStatus}/>
     </div>
   );
