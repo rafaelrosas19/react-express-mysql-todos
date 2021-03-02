@@ -15,6 +15,11 @@ export default function TodoApp() {
     setTodo({...todo, name: event.target.value})
   }
 
+  function handleDelete(id) {
+    console.log('delete')
+    // setTodos(updatedTodos)
+  }
+
   function handleSubmit(event){
     event.preventDefault()
     setTodos([...todos, todo])
@@ -36,7 +41,7 @@ export default function TodoApp() {
     <div className="container">
       <Header />
       <TodoForm handleTodo={handleTodo} handleSubmit={handleSubmit} todo={todo}/>
-      <Container todos={todos} toggleStatus={toggleStatus}/>
+      <Container todos={todos} toggleStatus={toggleStatus} handleDelete={handleDelete}/>
     </div>
   );
 }
