@@ -21,22 +21,7 @@ export default function TodoApp() {
     setTodos([...todos, todo])
     setTodo({ name: '', completed: false })
   }
-  // function handleToggleComplete(id) {
-  //   const newList = list.map((item) => {
-  //     if (item.id === id) {
-  //       const updatedItem = {
-  //         ...item,
-  //         isComplete: !item.isComplete,
-  //       };
- 
-  //       return updatedItem;
-  //     }
- 
-  //     return item;
-  //   });
- 
-  //   setList(newList);
-  // }
+//https://www.robinwieruch.de/react-update-item-in-list
   function toggleStatus(id){
     const updatedTodos = todos.map(todo =>{
       if (todo.id === id) {
