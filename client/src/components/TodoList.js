@@ -1,14 +1,20 @@
-export default function TodoList({todos, type, toggleStatus, handleDelete}){
+import './List.css'
+
+export default function TodoList({todos, type, toggleStatus, handleDelete, handleEdit}){
   const list = todos.map(todo => {
-    const removeX = todo.completed ? 'X' : null
+    const removeX = todo.completed ? <span className="remove-item" onClick={handleDelete}>X</span> : null
     return (
-      <div>
-        <div key={todo.id} onClick={() => toggleStatus(todo.id)}>{todo.name} </div><span onClick={handleDelete}>{removeX}</span>
+      <div className="list-item">
+        <div key={todo.id} onDoubleClick={() => handleEdit(todo.id)}>
+          {todo.name}
+        </div>
+        <span className="remove-item" onClick={() => toggleStatus(todo.id)}>toggleIcon</span>
+        {removeX}
       </div>
     )
   })
   return (
-    <div>
+    <div className="list-box">
     <h2>{type}</h2>
     {list}
     </div>

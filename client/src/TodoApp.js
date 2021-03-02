@@ -25,6 +25,13 @@ export default function TodoApp() {
     setTodos([...todos, todo])
     setTodo({ name: '', completed: false })
   }
+
+  function handleEdit(id){
+    console.log('edit me', id)
+    /*
+
+    */
+  }
 //https://www.robinwieruch.de/react-update-item-in-list
   function toggleStatus(id){
     const updatedTodos = todos.map(todo =>{
@@ -41,7 +48,7 @@ export default function TodoApp() {
     <div className="container">
       <Header />
       <TodoForm handleTodo={handleTodo} handleSubmit={handleSubmit} todo={todo}/>
-      <Container todos={todos} toggleStatus={toggleStatus} handleDelete={handleDelete}/>
+      <Container todos={todos} toggleStatus={toggleStatus} handleDelete={handleDelete} handleEdit={handleEdit}/>
     </div>
   );
 }
