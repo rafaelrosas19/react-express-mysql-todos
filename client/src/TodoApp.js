@@ -5,16 +5,54 @@ import TodoForm from './components/TodoForm'
 import Container from './components/Container'
 
 export default function TodoApp() {
+  const [todo, setTodo] = useState({ name: '', completed: false })
   const [todos, setTodos] = useState([
     { id: 1, name: "Go grocery shopping", completed: false },
     { id: 2, name: "Buy snacks", completed: true },
   ])
 
+  function handleTodo(event){
+    setTodo({...todo, name: event.target.value})
+  }
+
+  function handleSubmit(event){
+    event.preventDefault()
+  
+    setTodos([...todos, todo])
+    setTodo({ name: '', completed: false })
+  }
+  // function handleToggleComplete(id) {
+  //   const newList = list.map((item) => {
+  //     if (item.id === id) {
+  //       const updatedItem = {
+  //         ...item,
+  //         isComplete: !item.isComplete,
+  //       };
+ 
+  //       return updatedItem;
+  //     }
+ 
+  //     return item;
+  //   });
+ 
+  //   setList(newList);
+  // }
+  function toggleStatus(id){
+    const updatedTodos = todos.map(todo =>{
+      if (todo.id === id) {
+        return {...todo, completed: !todo.completed }
+      } else {
+        return todo
+      }
+    })
+    setTodos(updatedTodos)
+  }
+
   return (
     <div className="container">
       <Header />
-      <TodoForm />
-      <Container todos={todos}/>
+      <TodoForm handleTodo={handleTodo} handleSubmit={handleSubmit}/>
+      <Container todos={todos} toggleStatus={toggleStatus}/>
     </div>
   );
 }

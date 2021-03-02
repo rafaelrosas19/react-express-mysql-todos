@@ -1,9 +1,13 @@
-export default function TodoList({todos, type}){
-  const list = todos.map(todo => <li key={todo.id}>{todo.name}</li>)
+export default function TodoList({todos, type, toggleStatus}){
+  const list = todos.map(todo => {
+    return (
+      <div key={todo.id} onClick={() => toggleStatus(todo.id)}>{todo.name}</div>
+    )
+  })
   return (
-    <>
+    <div>
     <h2>{type}</h2>
-    <u>{list}</u>
-    </>
+    {list}
+    </div>
   )
 }
